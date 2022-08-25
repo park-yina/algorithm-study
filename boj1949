@@ -4,20 +4,20 @@
 #include<algorithm>
 using namespace std;
 #define MAX 10005
-int dp[MAX][2];//¿ì¼ö¸¶À» ÀÌ°Å³ª ¿ì¼ö ¸¶À»ÀÌ ¾Æ´Ï°Å³ªÀÇ °æ¿ìÀÇ ¼ö ¹Û¿¡ ¾ø±â ¶§¹®
+int dp[MAX][2];//ìš°ìˆ˜ë§ˆì„ ì´ê±°ë‚˜ ìš°ìˆ˜ ë§ˆì„ì´ ì•„ë‹ˆê±°ë‚˜ì˜ ê²½ìš°ì˜ ìˆ˜ ë°–ì— ì—†ê¸° ë•Œë¬¸
 vector<vector<int>>v;
-int n, a, b;//¸¶À»ÀÇ ¼ýÀÚ¿Í ÀÎÁ¢ ¸¶À»ÀÇ index¸¦ Ç¥ÇöÇÏ±â À§ÇÑ º¯¼ö
+int n, a, b;//ë§ˆì„ì˜ ìˆ«ìžì™€ ì¸ì ‘ ë§ˆì„ì˜ indexë¥¼ í‘œí˜„í•˜ê¸° ìœ„í•œ ë³€ìˆ˜
 int citi[MAX];
 bool visit[MAX];
 void dfs(int cur) {
-	if (visit[cur])return;//ÀÌ¹Ì ¹æ¹®ÇÑ °÷ÀÌ¸é ´Ù½Ã ¹æ¹®À» ÇÒ ÇÊ¿ä°¡ ¾øÀ½
-	dp[cur][0] = 0;//¿ì¼ö ¸¶À»ÀÏ ¶§¿¡¸¸ ¸¶À» ÁÖ¹ÎÀÇ ¼ö¸¦ °è»êÇØ¾ß ÇÏ±â ¶§¹®¿¡ ºñ ¿ì¼ö ¸¶À»Àº ÁÖ¹ÎÀÇ ¼ýÀÚ¸¦ 0À¸·Î ¼³Á¤
+	if (visit[cur])return;//ì´ë¯¸ ë°©ë¬¸í•œ ê³³ì´ë©´ ë‹¤ì‹œ ë°©ë¬¸ì„ í•  í•„ìš”ê°€ ì—†ìŒ
+	dp[cur][0] = 0;//ìš°ìˆ˜ ë§ˆì„ì¼ ë•Œì—ë§Œ ë§ˆì„ ì£¼ë¯¼ì˜ ìˆ˜ë¥¼ ê³„ì‚°í•´ì•¼ í•˜ê¸° ë•Œë¬¸ì— ë¹„ ìš°ìˆ˜ ë§ˆì„ì€ ì£¼ë¯¼ì˜ ìˆ«ìžë¥¼ 0ìœ¼ë¡œ ì„¤ì •
 	dp[cur][1] = citi[cur];
 	visit[cur] = true;
 	for (int next:v[cur]) {
 		if (visit[next])continue;
 		dfs(next);
-		dp[cur][0] = dp[cur][0] + max(dp[next][0], dp[next][1]);//ÀÏ¹Ý ¸¶À»Àº ¹«Á¶°ÇÀûÀ¸·Î ¿ì¼ö ¸¶À»°ú ÀÎÁ¢ÇØ¾ßÇÏ±â ¶§¹®
+		dp[cur][0] = dp[cur][0] + max(dp[next][0], dp[next][1]);//ì¼ë°˜ ë§ˆì„ì€ ë¬´ì¡°ê±´ì ìœ¼ë¡œ ìš°ìˆ˜ ë§ˆì„ê³¼ ì¸ì ‘í•´ì•¼í•˜ê¸° ë•Œë¬¸
 		dp[cur][1] = dp[cur][1] + dp[next][0];
 	}
 }
