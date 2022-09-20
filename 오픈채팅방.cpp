@@ -1,9 +1,9 @@
 #include <string>
 #include <vector>
-#include <map>
+#include <unordered_map>
 #include<sstream>
 using namespace std;
-map<string,string>user_nick;
+unordered_map<string,string>user_nick;
 vector<pair<string,string>>result;
 vector<string> solution(vector<string> record) {
     vector<string> answer;
